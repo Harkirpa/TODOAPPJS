@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/90bc066b2e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="single-task-modal" class="single-task-modal">
+        <div class="topbar">
+            <button onclick="ToggleSingleTaskModal()" class="onebtn">Back</button>
+            <p id="single-task-name"></p>
+            <button onclick="ToggleItemModal()" class="onebtn">Add New item</button>
+        </div>
+        <div id="singleTaskCard" class="singleTaskCard"></div>
+    </div>
+    <div class="modal" id="modal">
+        <div class="box">
+            <h2>Add New Task</h2>
+            <br>
+            <input type="text" class="input_box"id="task-Input" placeholder="📑 Add New List"
+                  style="text-align:center;font: size 30px;color:orangered;">
+           
+            <div class="down">
+                <input type="button" value="Add"class="add_button" id="task-submit" onclick="addTask()"/>
+                <input type="button" class="closebtn" id="modal-close" value="Close" onclick="ToggleModal()"/>
+            </div>
+        </div>
+    </div>
+    <div class="item-modal" id="item-modal">
+        <div class="box">
+            <h2>Add New Item</h2>
+            <input type="text" id="item-input" placeholder="Enter the item name">
+            <br>
+            <div class="down">
+            <input type="button" value="Add" id="item-submit"class="add_button" onclick="addItem()">
+            <input type="button" value="Close" id="modal-close"  class="closebtn"onclick="ToggleItemModal()">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="topbar">
+           
+            <div class="upper">Tasks<span class="upper1">List</span></div>
+           
+            <div id="right_index_header">
+                <p><i class="fas fa-plus-circle index_plus"></i> Add Lists</p>
+            </div>
+        </div>
+        <p class="seen">No Items in the todo list</p>
+        <div id="taskContainer" class="taskContainer"></div>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>
