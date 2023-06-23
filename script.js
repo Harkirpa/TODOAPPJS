@@ -3,8 +3,6 @@ clickable.addEventListener("click",ToggleModal);
 
 var boxIndex = -1;
 var singleTaskIndex = -1;
-
-
 Todos=[];
 
 // Todos is an Array that will store all Tasks.
@@ -34,7 +32,7 @@ function ToggleSingleTaskModal() {
 
   const modal = document.getElementById("single-task-modal");
   modal.style.backgroundColor="black";
-  // console.log(modal.style.display);
+  
   const singleTaskContainer=document.getElementById("singleTaskCard");
   singleTaskContainer.innerHTML="";
   if (modal.style.display === "block") 
@@ -52,12 +50,12 @@ function ToggleSingleTaskModal() {
 }
 
 function ToggleItemModal() {
-  console.log("Item Modal CAlled");
+  console.log("Item Modal Called");
   // Acess the Element with the ID as "modal"
   const modal = document.getElementById("item-modal");
   const itemInput2 = document.getElementById("item-input");
   itemInput2.value = "";
-  // console.log(modal.style.display);
+ 
   if (modal.style.display === "block") 
   {
     modal.style.display = "none";
@@ -74,19 +72,19 @@ function renderSingleItem(){
   const singleTaskContainer=document.getElementById("singleTaskCard");
   singleTaskContainer.innerHTML="";
 
-  // singleTaskContainer.style.width="300px";
+ 
   singleTaskContainer.style.display="flex";
   singleTaskContainer.style.justifyContent="center";
 
   const singleTask=document.getElementsByClassName("taskCard")[singleTaskIndex];
-  // const itemInput = document.getElementById("item-input");
+
   console.log(singleTask,"index : ",singleTaskIndex);
   singleTaskContainer.appendChild(singleTask);
 }
 
 function removeValueAtIndex(index) {
   console.log("Index to remove : ", index);
-  // removes the value at 'index' from Todos
+  
   const left = Todos.slice(0, index);
   console.log("Left : ", left);
 
@@ -144,12 +142,12 @@ function renderItems() {
     taskTitle.addEventListener("click", ()=>{
       ToggleSingleTaskModal();
       const container = document.getElementsByClassName("container")[0];
-      // container.style.display = "none";
+     
       taskTitle.style.color="red";
-      // singleTaskIndex = taskTitle.parentElement.id.innerText = Todos[singleTaskIndex].name;
+      
       singleTaskIndex = taskTitle.parentElement.id;
       document.getElementById("single-task-name").innerText = Todos[singleTaskIndex].name;
-      // document.getElementById("box").innerHTML = Todos[taskCard].name;
+    
       console.log("index:", singleTaskIndex);
       renderSingleItem();
     });
@@ -169,7 +167,7 @@ function renderItems() {
     const addBtn = document.createElement("img");
     addBtn.style.width="40px";
     addBtn.style.height="40px";
-    addBtn.src = "./add1.jpg";
+    addBtn.src = "./edit.jpg";
     addBtn.classList.add("plus-icon");
     addBtn.addEventListener("click", () => {
       ToggleItemModal();
@@ -196,7 +194,7 @@ function renderItems() {
 
     const itemList = document.createElement("ul");
     itemList.style.listStyleType="none";
-    itemList.style.flex = "1";
+  
     itemList.style.lineHeight = "35px";
 
     value.items.map((item) => {
@@ -206,9 +204,9 @@ function renderItems() {
       markbtn.style.display = "inline";
       markbtn.style.backgroundColor="blue";
       markbtn.style.color="white";
-      markbtn.style.marginLeft="10px"
+      markbtn.style.marginLeft="20px"
       markbtn.style.borderRadius="10px"
-      markbtn.style.fontSize="13px"
+      markbtn.style.fontSize="16px"
       markbtn.classList.add("markBtn");
 
       const item1 = document.createElement("li");
