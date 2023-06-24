@@ -156,6 +156,7 @@ function renderItems() {
 
     const Hrline = document.createElement("hr");
     Hrline.classList.add('myHrline');
+    Hrline.style.marginTop='8px';
     taskCard.appendChild(Hrline);
     const buttonContainer = document.createElement("div");
     buttonContainer.classList.add("buttonContainer");
@@ -167,7 +168,8 @@ function renderItems() {
     const addBtn = document.createElement("img");
     addBtn.style.width="40px";
     addBtn.style.height="40px";
-    addBtn.src = "./edit.jpg";
+    addBtn.style.marginTop='190px';
+    addBtn.src = "./add1.jpg";
     addBtn.classList.add("plus-icon");
     addBtn.addEventListener("click", () => {
       ToggleItemModal();
@@ -178,6 +180,7 @@ function renderItems() {
     const delBtn = document.createElement("img");
     delBtn.style.width="40px";
     delBtn.style.height="40px";
+    delBtn.style.marginTop='190px';
     delBtn.src = "./delet.jpg";
     delBtn.classList.add("bin-icon");
 
@@ -205,12 +208,13 @@ function renderItems() {
       markbtn.style.backgroundColor="blue";
       markbtn.style.color="white";
       markbtn.style.marginLeft="20px"
-      markbtn.style.borderRadius="10px"
+      markbtn.style.borderRadius="17px"
       markbtn.style.fontSize="16px"
       markbtn.classList.add("markBtn");
 
       const item1 = document.createElement("li");
       item1.innerText = item.name;
+      item1.style.textAlign="center";
 
       item1.appendChild(markbtn);
       markbtn.addEventListener("click", () => {
