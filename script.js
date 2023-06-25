@@ -1,238 +1,205 @@
-const clickable = document.getElementById("right_index_header");
-clickable.addEventListener("click",ToggleModal);
+let icons = document.getElementById("right_index_header")
+let section = document.querySelector("section")
+let todoText=document.getElementById('todoText')
+let header1=document.getElementsByTagName('header')[0]
+let header2=document.getElementsByTagName('header')[1]
+let page2Header= document.getElementById('single-task-model')
+let backs=document.getElementsByClassName('backs')[0]
+let header2Add=document.getElementById('header2Add');
+// when we click on header add item
+icons.addEventListener('click', ()=>{
+  addItems("Add your items")
+})
 
-var boxIndex = -1;
-var singleTaskIndex = -1;
-Todos=[];
+function addItems(heading, parentNode=""){
 
-// Todos is an Array that will store all Tasks.
+  console.log(heading)
+//   create node
+let popup=document.createElement('div')
+popup.className="popup"
+let popupHead=document.createElement('div')
+popupHead.id="popupHead"
+popupHead.textContent=heading
+let popupInput=document.createElement('input')
+popupInput.id="popupInput"
+popupInput.type="text"
+popupInput.placeholder=heading
 
-renderItems();
+let buttons=document.createElement('div')
+buttons.className="buttons"
 
-function ToggleModal() {  
-  console.log("here");
- 
-  const modal = document.getElementById("modal");
-  console.log(modal.style.display);
-  if (modal.style.display == "block") 
-  {
-    modal.style.display = "none";
-  } 
-  else 
-  {
-    modal.style.display = "block";
-  }
-  
-  const taskInput = document.getElementById("task-Input");
-  taskInput.value = "";
-  taskInput.focus();
-}
+let popupAdd=document.createElement('button')
+popupAdd.id="popupAdd"
+popupAdd.textContent="Add"
 
-function ToggleSingleTaskModal() {
+let popupClose=document.createElement('button')
+popupClose.id="popupClose"
+popupClose.textContent="Close"
 
-  const modal = document.getElementById("single-task-modal");
-  modal.style.backgroundColor="black";
-  
-  const singleTaskContainer=document.getElementById("singleTaskCard");
-  singleTaskContainer.innerHTML="";
-  if (modal.style.display === "block") 
-  {
-    modal.style.display = "none";
-  }
-  else
-   {
-    modal.style.display = "block";
-  }
-      const container = document.getElementsByClassName("container")[0];
-      container.style.display = "block";
-      renderItems();
-  // taskInput.focus();
-}
+// connecting nodes 
+document.body.appendChild(popup)
+popup.appendChild(popupHead)
+popup.appendChild(popupInput)
+popup.appendChild(buttons)
+buttons.appendChild(popupAdd)
+buttons.appendChild(popupClose)
 
-function ToggleItemModal() {
-  console.log("Item Modal Called");
-  // Acess the Element with the ID as "modal"
-  const modal = document.getElementById("item-modal");
-  const itemInput2 = document.getElementById("item-input");
-  itemInput2.value = "";
- 
-  if (modal.style.display === "block") 
-  {
-    modal.style.display = "none";
-  } 
-  else 
-  {
-    modal.style.display = "block";
-  }
-  itemInput2.focus();
-}
-
-function renderSingleItem(){
-  const modal=document.getElementById("single-task-modal");
-  const singleTaskContainer=document.getElementById("singleTaskCard");
-  singleTaskContainer.innerHTML="";
-
- 
-  singleTaskContainer.style.display="flex";
-  singleTaskContainer.style.justifyContent="center";
-
-  const singleTask=document.getElementsByClassName("taskCard")[singleTaskIndex];
-
-  console.log(singleTask,"index : ",singleTaskIndex);
-  singleTaskContainer.appendChild(singleTask);
-}
-
-function removeValueAtIndex(index) {
-  console.log("Index to remove : ", index);
-  
-  const left = Todos.slice(0, index);
-  console.log("Left : ", left);
-
-  const right = Todos.slice(Number(index) + 1, Todos.length);
-  console.log("Right : ", right);
-
-  Todos = left.concat(right);
-  console.log("Combined : ", Todos);
-}
-
-function addTask() {
-  console.log("Add Task Called");
-  const taskInput = document.getElementById("task-Input");
-  const newObj = { name: taskInput.value, items: [] };
-  Todos.push(newObj);
-  renderItems();
-  ToggleModal();
-
-}
-
-function addItem() {
-  console.log("Add Item Called for Index : ", boxIndex);
-  const itemInput = document.getElementById("item-input");
-  console.log("Item input given : ", itemInput.value);
-  const newItemObject = { name: itemInput.value, isCompleted: false };
-  Todos[boxIndex].items.push(newItemObject);
-  console.log("Item",Todos[boxIndex].items);
-  renderItems();
-  if(singleTaskIndex!=-1)
-  {
-    renderSingleItem();
-  }
-  ToggleItemModal();
-}
-
-// This Function displays all the data in the Todos Array
-function renderItems() {
-  console.log("tODOS : ", Todos);
-  var index = 0;
-  // Each time the RenderItems Function is called , it will empty the taskcontainer
-  const taskContainer = document.getElementById("taskContainer");
-  taskContainer.innerHTML = "";
-
-  for (var i = 0; i <= Todos.length - 1; i++) {
-    var value = Todos[i];
-    const taskCard = document.createElement("div");
-    taskCard.classList.add("taskCard");
-    taskCard.id = index;
-    index++;
-
-    const taskTitle = document.createElement("h2");
-    taskTitle.classList.add("taskTitle");
-    taskCard.appendChild(taskTitle);
-
-    taskTitle.addEventListener("click", ()=>{
-      ToggleSingleTaskModal();
-      const container = document.getElementsByClassName("container")[0];
-     
-      taskTitle.style.color="red";
-      
-      singleTaskIndex = taskTitle.parentElement.id;
-      document.getElementById("single-task-name").innerText = Todos[singleTaskIndex].name;
+  if(heading === "Add new subitems"){
+    popupAdd.addEventListener("click",() =>{
+      creatingSubTask(popupInput.value, parentNode)
+      closingPopup()
+    })
     
-      console.log("index:", singleTaskIndex);
-      renderSingleItem();
-    });
-
-    taskTitle.innerText = value.name;
-
-    const Hrline = document.createElement("hr");
-    Hrline.classList.add('myHrline');
-    Hrline.style.marginTop='8px';
-    taskCard.appendChild(Hrline);
-    const buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("buttonContainer");
-    buttonContainer.style.display="flex";
-    buttonContainer.style.justifyContent="end";
-    buttonContainer.style.margin="10px";
-
-    // add
-    const addBtn = document.createElement("img");
-    addBtn.style.width="40px";
-    addBtn.style.height="40px";
-    addBtn.style.marginTop='190px';
-    addBtn.src = "./add1.jpg";
-    addBtn.classList.add("plus-icon");
-    addBtn.addEventListener("click", () => {
-      ToggleItemModal();
-      boxIndex = addBtn.parentElement.parentElement.id;
-    });
-
-    // del
-    const delBtn = document.createElement("img");
-    delBtn.style.width="40px";
-    delBtn.style.height="40px";
-    delBtn.style.marginTop='190px';
-    delBtn.src = "./delet.jpg";
-    delBtn.classList.add("bin-icon");
-
-    delBtn.addEventListener("click", () => {
-      const delIndex = delBtn.parentElement.parentElement.id;
-      removeValueAtIndex(delIndex);
-      renderItems();
-      const modal=document.getElementById("single-task-modal");
-      modal.style.display="none";
-    });
-
-    buttonContainer.appendChild(delBtn);
-    buttonContainer.appendChild(addBtn);
-
-    const itemList = document.createElement("ul");
-    itemList.style.listStyleType="none";
-  
-    itemList.style.lineHeight = "35px";
-
-    value.items.map((item) => {
-
-      const markbtn = document.createElement("p");
-      markbtn.innerText = "Mark done";
-      markbtn.style.display = "inline";
-      markbtn.style.backgroundColor="blue";
-      markbtn.style.color="white";
-      markbtn.style.marginLeft="20px"
-      markbtn.style.borderRadius="17px"
-      markbtn.style.fontSize="16px"
-      markbtn.classList.add("markBtn");
-
-      const item1 = document.createElement("li");
-      item1.innerText = item.name;
-      item1.style.textAlign="center";
-
-      item1.appendChild(markbtn);
-      markbtn.addEventListener("click", () => {
-        item.isCompleted = !item.isCompleted;
-        renderItems();
-        renderSingleItem()
-      });
-      if (item.isCompleted) {
-        item1.style.textDecoration = "line-through";
-        item1.style.color = "red";
-        markbtn.style.display = "none";
-      }
-      itemList.appendChild(item1);
-
-    });
-
-    taskContainer.appendChild(taskCard);
-    taskCard.appendChild(itemList);
-    taskCard.appendChild(buttonContainer);
   }
+  else if(heading === "Add your items"){
+    popupAdd.addEventListener("click", ()=>{
+      createNewTask(popupInput.value)
+      // to not show the text after the card creation
+      todoText.style.display="none"; 
+      closingPopup()
+      page1();
+    })
+  }
+  //  closing the popup
+  popupClose.addEventListener("click", ()=>{
+    closingPopup()
+  })
+
+  function closingPopup(){
+    popup.remove()
+    popupInput.value = ""
+    
+for(let i=0;i<document.body.children.length;i++){
+    document.body.children[i].style.filter="blur(0)"
+
+}
+
+  }
+
+//   bg blur
+for(let i=0;i<document.body.children.length;i++){
+    document.body.children[i].style.filter="blur(5px)"
+
+}
+popup.style.filter="blur(0)"
+
+
+}
+
+function createNewTask(cardHeading){
+  // creating nodes
+  let todoCard = document.createElement("div")
+  todoCard.className = "todoCard"
+
+
+  let cardHead = document.createElement("div")
+  cardHead.className = "cardHead"
+  cardHead.textContent = cardHeading
+
+  let subTaskButtons = document.createElement("div")
+  subTaskButtons.className = "subTaskButtons"
+
+  let trash = document.createElement("span")
+  // trash.textContent = "Delete"
+  trash.style.width="30px";
+  trash.style.height="30px";
+  trash.src="./delet.jpg";
+  //  trash.className="material-symbols-outlined";//trash-icon
+   trash.id="trash";
+  let createSubTask = document.createElement("button")
+  createSubTask.className = "createSubTask"
+  createSubTask.textContent = "+"
+
+  // connecting Nodes
+
+  section.appendChild(todoCard)
+  todoCard.appendChild(cardHead)
+  todoCard.appendChild(subTaskButtons)
+  subTaskButtons.appendChild(trash)
+  subTaskButtons.appendChild(createSubTask)
+
+  // creating sub tasks
+
+  createSubTask.addEventListener("click", ()=>{
+    addItems("Add new subitems", todoCard)
+  })
+  // deleting the card
+  trash.addEventListener("click", ()=>{
+    todoCard.remove()
+    //This is dispalying the no item elements text when there is no cards
+    if(section.children.length===0){
+        todoText.style.display="block"; 
+    }
+
+  })
+
+  
+// trigger page 2 
+cardHead.addEventListener('click',()=>{
+    page2(todoCard);
+})
+}
+
+// creating subtask function
+
+function creatingSubTask(subTaskDesc, parentNode){
+  
+  let subTaskRow = document.createElement("div")
+  subTaskRow.className = "subTaskRow"
+
+  let subTask = document.createElement("span")
+  subTask.className = "subTask"
+  subTask.textContent = subTaskDesc
+
+  let markBtn = document.createElement("button")
+  markBtn.className = "markDone"
+  markBtn.textContent = "Mark Done"
+  markBtn.style.backgroundColor="blue";
+   markBtn.style.color="white";
+
+  // connecting nodes
+  parentNode.appendChild(subTaskRow)
+  subTaskRow.appendChild(subTask)
+  subTaskRow.appendChild(markBtn)
+
+   // mark done functionality
+
+   markBtn.addEventListener("click",()=>{
+    subTask.classList.add("checkedSubTask")
+    markBtn.remove();
+  })
+}
+
+// ------------------page 2 ---------------
+// back btn in page 2
+backs.addEventListener('click',()=>{
+    page1();
+})
+// add btn in page 2
+header2Add.addEventListener('click',()=>{
+    addItems("Add your items");
+ 
+})
+
+
+function page2(parentNode){
+header1.style.display="none"
+header2.style.display="flex"
+parentNode.classList.add("centerCard")
+section.style.visibility="hidden"
+page2Header.textContent=parentNode.children[0].textContent;
+}
+function page1(){
+header1.style.display="flex"
+header2.style.display="none"
+section.style.visibility="visible"
+removeClass();
+}
+
+// checking and removing if any centerCard class in any div
+function removeClass(){
+    for(let i=0;i<section.children.length;i++){
+        section.children[i].classList.remove("centerCard");
+    }
+
 }

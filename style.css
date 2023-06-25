@@ -1,212 +1,264 @@
-*
-{
- margin: 0;
-padding: 0;
+*{
+  margin: 0;
+  padding: 0;
 }
-body{
-    background-color: black;
-}
-.upper
-{
-    font-size: 40px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-}
-.upper1
-{
-    color: grey;
-}
-.topbar
-{
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    padding-top: 60px;
-margin-right:252px;
-}
-.add
-{
-    font-size: 25px;
-    padding-left: 10px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.for
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.box
-{
-    background-color: white;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 400px;
-    height: 200px;
-    border-radius: 20px;
-    padding: 20px;
-}
-#task-Input
-{
-    width: 300px;
-    height: 30px;
-border-radius:10px;
-margin-left:46px;
-}
-.modal
-{
-    background-color: rgba(0, 0, 0, 0.594);
-    backdrop-filter: blur(2px);
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-}
-.item-modal
-{
-    background-color: rgba(0, 0, 0, 0.594);
-    backdrop-filter: blur(2px);
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-}
-#item-input
-{
-    width: 395px;
-    height: 30px; 
-}
-.single-task-modal
-{
-    display: none;
-    height: 100vh;
-}
-
-.down
-{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-.taskContainer
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 20px;
-    padding: 20px;
-}
-@media  only  screen and (max-width:500px){
-    #right_index_header{
-       
-        margin-top: 99px;}
-     .seen{
-        
-        margin-top: 50px;
-       
-    }
-    .box{
-        width:300px;
-        height:200px;
-    }
-    #task-Input{
-        width:305px;
-        height:45px;
-    }
-    #item-input{
-        width:305px;
-        height:45px;
-    }
-    
-   
-}
-.taskCard
-{
-    background-color:white;
-    box-shadow: rgba(0,0,0,0.35)0px 5px 15px;
+body {
  
-    border-radius: 10px;
-    width:250px;
-    height:330px;
-
+  background-color: black; 
+}
+header {
+  display: flex;
+  margin: 44px 10% 50px 10%;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 40px;
 }
 .index_plus {
-    color: rgba(14, 47, 156, 0.801);
-    margin: 0 0px 0 0;
-    font-size: 2.8rem;
-  }
-.taskTitle
-{
-    margin:10px;
-    text-align: center;
+  color: rgba(14, 47, 156, 0.801);
+  margin: 0 0px 0 0;
+  font-size: 2.8rem;
 }
 .index_plus:hover{
-    cursor: pointer;
+  cursor: pointer;
+}
+#right_index_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#right_index_header > p {
+  font-size: 1.9rem;
+  font-family: "Roboto", sans-serif;
+  color:white;
+  font-weight: bold;
+  position: absolute;
+  right: 80px;
+}
+
+/* header2  */
+.header2{
+  display: none;
+  
+}
+.backs{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 130px;
+  height: 50px;
+}
+#backIcon{
+  width: 40px;
+  height: 40px;
+  background: rgb(0, 0, 0);
+  color: white;
+  border-radius: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+#back{
+  display: inline-block;
+  font-size: 34px;
+  width: 100px;
+  height: 50px;
+  margin-bottom: 5px;
+ 
+}
+/* section */
+
+section{
+  position: relative;
+  margin: 80px 10% ;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: 40vh;
+}
+#task {
+  font-weight: bolder;
   }
-  #right_index_header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  #right_index_header > p {
-    font-size: 1.9rem;
-    font-family: "Roboto", sans-serif;
-    color:white;
-    font-weight: bold;
-    position: absolute;
-    right: 50px;
-  }
-.seen
-{
-    font-size: 30px;
+
+#list {
+  font-weight: lighter;
+  color:grey;
+}
+.todoText {
+  font-size: 30px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    margin-left: 97px;
+    color: grey;
+    margin-left: 65px;
 }
-.onebtn
-{
-    background-color: blue;
-    width: 116px;
-    border-radius: 20px;
-    color: white;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    height:63px;
+
+p{ 
+  margin: 80px 10%;
+ 
 }
-.add_button {
-    width: 6.5rem;
-    height: 2.6rem;
-    background-color: darkorange;
-    color: white;
-    border: 0;
-    border-radius: 1.2rem;
-    font-size: 1.4rem;
-    cursor: pointer;
-    margin-left: 44px;
+#plus{
+   position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-60%);
+    color: black;
+    font-weight: bolder;
+}
+/* pop up */
+.popup{
+  position: absolute; 
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%); 
+  display: flex;
+  height: 204px;
+  width: 355px;
+  background: white;
+  border-radius: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: popUpTrans 0.5s ease-in 1 ;
+}
+@keyframes popUpTrans {
+ 
+  0%{
+     transform: translate(-50%,-20%);
+     opacity: 0.1;
   }
-  .closebtn {
-    width: 6.5rem;
-    height: 2.6rem;
-    background-color: darkorange;
-    color: white;
-    border: 0;
-    border-radius: 1.2rem;
-    font-size: 1.4rem;
-    cursor: pointer;
-    margin-top:-2px;
-    margin-right: 86px;
+  100%{
+  transform: translate(-50%,-50%); 
+      opacity: 1;
+
   }
-  #single-task-name{
-         font-size: x-large;
-         text-align: center;
-         color: white;
+}
+#popupHead{
+  color: red;
+  margin-bottom:20px;
+}
+#popupInput{
+  margin-bottom:20px;
+  width: 217px;
+  height:29px;
+  border-radius: 10px;
+  border:1px solid red;
+   text-align: center;
+}
+.buttons{
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+
+}
+.buttons button{
+  background: orangered;
+  border-radius: 5px;
+  width: 71px;
+  height: 38px;
+  font-size:20px;
+  color:white;
+}
+
+
+/* Card CSS */
+
+.todoCard{
+ width:261px;
+ height:338px;
+  background-color: white;
+  
+  border-radius: 10px;
+  position: relative;
+  margin:0px 10px 20px 10px;
+  padding-bottom: 40px;
+}
+
+.cardHead{
+  color: black;
+  padding: 10px ;
+  border-bottom: 2px solid black;
+  text-align: center;
+  font-size: larger;
+}
+#single-task-name{
+  font-size: x-large;
+  text-align: center;
+  color: white;
+}
+
+.subTaskButtons{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 70px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.subTaskRow{
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.markDone{
+  color: white;
+  background-color: rgb(165, 165, 252);
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+.subTask{
+  color: black;
+  font-weight: bold;
+}
+
+.checkedSubTask{
+  color: red;
+  text-decoration: line-through;
+}
+#trash{
+  background: rgb(124, 238, 253);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+
+}
+.createSubTask{
+  background: rgb(0, 30, 255);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+.centerCard{
+visibility: visible;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%,-50%);
+}
+@media (max-width:580px) {
+  section{
+      justify-content: center;
   }
+  header{
+      font-size: 25px;
+  }
+}
