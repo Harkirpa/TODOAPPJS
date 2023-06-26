@@ -65,15 +65,22 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  margin-bottom: 156px;
 }
 #back{
   display: inline-block;
   font-size: 34px;
   width: 100px;
   height: 50px;
-  margin-bottom: 5px;
+  margin-bottom: 156px;
  
+}
+#header2Add
+{
+  margin-top: -156px;
+}
+#page2{
+  margin-bottom: 156px;
 }
 /* section */
 

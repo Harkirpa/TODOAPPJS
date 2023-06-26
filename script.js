@@ -177,6 +177,7 @@ header1.style.display="none"
 header2.style.display="flex"
 parentNode.classList.add("centerCard")
 section.style.visibility="hidden"
+
 page2Header.textContent=parentNode.children[0].textContent;
 }
 function page1(){
