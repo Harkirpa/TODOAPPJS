@@ -262,4 +262,8 @@ transform: translate(-50%,-50%);
   header{
       font-size: 25px;
   }
+  #right_index_header{
+        position: relative;
+        top:27 px;
+  }
 }
