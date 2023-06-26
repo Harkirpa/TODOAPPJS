@@ -35,6 +35,14 @@ header {
   position: absolute;
   right: 80px;
 }
+#task {
+  font-weight: bolder;
+  }
+
+#list {
+  font-weight: lighter;
+  color:grey;
+}
 
 /* header2  */
 .header2{
@@ -57,7 +65,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid white;
+  
 }
 #back{
   display: inline-block;
@@ -76,14 +84,6 @@ section{
   justify-content: space-between;
   flex-wrap: wrap;
   min-height: 40vh;
-}
-#task {
-  font-weight: bolder;
-  }
-
-#list {
-  font-weight: lighter;
-  color:grey;
 }
 .todoText {
   font-size: 30px;
@@ -112,8 +112,8 @@ p{
   top: 50%;
   transform: translate(-50%,-50%); 
   display: flex;
-  height: 204px;
-  width: 355px;
+  height: 209px;
+  width: 361px;
   background: white;
   border-radius: 20px;
   flex-direction: column;
@@ -136,11 +136,12 @@ p{
 #popupHead{
   color: red;
   margin-bottom:20px;
+  font-size: x-large;
 }
 #popupInput{
   margin-bottom:20px;
-  width: 217px;
-  height:29px;
+  width: 231px;
+  height:36px;
   border-radius: 10px;
   border:1px solid red;
    text-align: center;
@@ -148,7 +149,7 @@ p{
 .buttons{
   display: flex;
   justify-content: space-around;
-  width: 200px;
+  width: 209px;
 
 }
 .buttons button{
@@ -203,7 +204,7 @@ p{
   text-align: center;
 }
 
-.markDone{
+.markBtn{
   color: white;
   background-color: rgb(165, 165, 252);
   border: 2px solid black;

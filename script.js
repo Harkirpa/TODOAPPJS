@@ -3,7 +3,7 @@ let section = document.querySelector("section")
 let todoText=document.getElementById('todoText')
 let header1=document.getElementsByTagName('header')[0]
 let header2=document.getElementsByTagName('header')[1]
-let page2Header= document.getElementById('single-task-model')
+let page2Header= document.getElementById('page2')
 let backs=document.getElementsByClassName('backs')[0]
 let header2Add=document.getElementById('header2Add');
 // when we click on header add item
@@ -73,17 +73,13 @@ for(let i=0;i<document.body.children.length;i++){
     document.body.children[i].style.filter="blur(0)"
 
 }
-
-  }
-
+}
 //   bg blur
 for(let i=0;i<document.body.children.length;i++){
     document.body.children[i].style.filter="blur(5px)"
 
 }
 popup.style.filter="blur(0)"
-
-
 }
 
 function createNewTask(cardHeading){
@@ -100,11 +96,8 @@ function createNewTask(cardHeading){
   subTaskButtons.className = "subTaskButtons"
 
   let trash = document.createElement("span")
-  // trash.textContent = "Delete"
-  trash.style.width="30px";
-  trash.style.height="30px";
-  trash.src="./delet.jpg";
-  //  trash.className="material-symbols-outlined";//trash-icon
+   trash.textContent = "Delete"
+   trash.className="material-symbols-outlined";//trash-icon
    trash.id="trash";
   let createSubTask = document.createElement("button")
   createSubTask.className = "createSubTask"
@@ -132,14 +125,11 @@ function createNewTask(cardHeading){
     }
 
   })
-
-  
 // trigger page 2 
 cardHead.addEventListener('click',()=>{
     page2(todoCard);
 })
 }
-
 // creating subtask function
 
 function creatingSubTask(subTaskDesc, parentNode){
@@ -155,7 +145,7 @@ function creatingSubTask(subTaskDesc, parentNode){
   markBtn.className = "markDone"
   markBtn.textContent = "Mark Done"
   markBtn.style.backgroundColor="blue";
-   markBtn.style.color="white";
+  markBtn.style.color="white"
 
   // connecting nodes
   parentNode.appendChild(subTaskRow)
