@@ -259,10 +259,10 @@ p{
 visibility: visible;
 position: absolute;
 left: 50%;
-top: 50%;
+top: 2%;
 transform: translate(-50%,-50%);
 }
-@media (max-width:580px) {
+@media (max-width:500px) {
   section{
       justify-content: center;
   }
@@ -274,3 +274,4 @@ transform: translate(-50%,-50%);
         top:27 px;
   }
 }
+
